@@ -60,18 +60,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     /////////////////////////// Active menu///////////////////////////////////
-    let menuLi = document.querySelectorAll('header ul li a');
-    let sections = document.querySelectorAll('section');
+    let menuLi = document.querySelectorAll(".navlist a");
+    let sections = document.querySelectorAll("section");
 
-    function activeMenu() {
-        let len = sections.length;
-        while (--len && window.scrollY + 97 < sections[len].offsetTop) {}
-        menuLi.forEach(sec => sec.classList.remove("active"));
-        menuLi[len].classList.add("active");
-    }
+    const changeActive = () => {
+        let index = sections.length;
 
-    activeMenu();
-    window.addEventListener("scroll", activeMenu);
+        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+        menuLi.forEach((link) => link.classList.remove("active"));
+        menuLi[index].classList.add("active");
+    };
+
+    changeActive();
+    window.addEventListener("scroll", changeActive);
 
     /////////////////////////////////////////////////// Sticky navbar////////////////////////////////////////////////////////////////////////
     const header = document.querySelector("header");
@@ -90,9 +92,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 //////////////////////////////////////////////////////////toggle icone navbar/////////////////////////////////////
-let menuIcone = document.querySelector("#menu-icon");
-let navlist = document.querySelector(".navlist");
-menuIcone.onclick = () => {
-    menuIcone.classList.toggle("bx-x");
-    navlist.classList.toggle("open");
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navList = document.querySelector('.navlist');
+    
+    // Toggle the menu visibility and icon state when menuIcon is clicked
+    menuIcon.addEventListener('click', function() {
+        navList.classList.toggle('show');
+        menuIcon.classList.toggle('bx-x'); // Toggle between menu and close (x) icon
+    });
+
+    // Optional: Hide the menu and reset the icon when window is resized beyond a certain width
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            navList.classList.remove('show');
+            menuIcon.classList.remove('bx-x'); // Ensure the icon is reset to menu state
+        }
+    });
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////msg////////////////////////
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzXO5NEJTB8xLxh2Zirc2ZXSQZYml3RSYTiA9aKdCY4T0uKDTXi-xMRITO5YbIcvmh0KQ/exec'
+const form = document.forms['submit-to-google-sheet']
+const msg = document.getElementById("msg")
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        msg.innerHTML = "Message Sent Successfully"
+        setTimeout(function(){
+            msg.innerHTML = ""
+        }, 5000)
+        form.reset()
+    })
+    .catch(error => console.error('Error!', error.message))
+})
