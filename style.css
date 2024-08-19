@@ -7,6 +7,7 @@
     scroll-behavior: smooth;
     text-decoration: none;
 }
+
 :root {
     --text-color: #f5f5f5;
     --hover-color: #12f7ff;
@@ -35,7 +36,7 @@ header {
     top: 0;
     left: 0;
     display: flex;
-    z-index: 10001;
+    z-index: 1000;
     border-bottom: 1px solid transparent;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +81,7 @@ span {
 .navlist a.active{
     color:var(--hover-color);
 }
-#menu-icon {
+#menu-icon{
     font-size: 1.8rem;
     z-index: 10001;
     cursor: pointer;
@@ -766,59 +767,218 @@ footer p {
 
 
 /*          --------------------Break Points-----------------------       */
+@media only screen and (max-width: 1024px) {
+   
+    .skill-main {
+        grid-template-columns: 1fr;
+    }
+    
+   
+    .home {
+        grid-template-columns: 1fr;
+    }
 
-@media(max-width:991px){
-    header,
-    header.sticky{
-        padding: 15px 5%;
-    }
-    footer{
-        padding: 15px 5%; 
-    }
-    section{
-        padding: 50px 5%;
-    }
-    .navlist a{
-        padding: 8px 15px;
-    }
-    :root {
-        --big-font: 2.2rem;
-        --normal-font:1.8rem;
-        --neon-box-shadow: 0 0 .8rem #12f7ff;
-        --h2-font: 3rem;
-}
-.home-content{
-    margin-top: 5rem;
-}
-.social-icons{
-    margin-top: 2rem;
-}
-
-}
-
-@media(max-width:768px){
-    #menu-icone{
-        display: block;
-        transition: all .4s ease;
-    }
-    #menu-icone{
-        transform: rotate(-180deg);
-    }
-    .navlist{
-        display: flex;
-        padding: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
+    .about {
         flex-direction: column;
-        background: var(--bg-color);
-        text-align:left;
-        padding: 0.5%;
-        transition: all .45 ease;
     }
-    .navlist a{
+
+    .about .img-about {
+        margin-bottom: 1rem;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .section-services {
+        flex-direction: column;
+    }
+
+    .portfolio-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact form {
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home-image .img-box img {
+       display: none;
+    }
+    .home {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        text-align: center;
+    }
+    .filter-buttons {
+        display: none;
+    }
+
+    .home-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .home-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .change-text {
+        font-size: 1.1rem;
+        text-align: left;
+        margin: 0 auto; 
+        padding: 0 14.5%; 
+    }
+
+    .home-image {
+        margin-bottom: 2rem;
+    }
+
+    .home-image .img-box img {
+        max-width: 200px;
+    }
+
+    header {
+        padding: 12px 5%;
+        position: relative;
+    }
+    .navlist {
+        position: fixed;
+        display: none; 
+        position: absolute;
+        top: 40px; 
+        right:0;
+        width: 100px;;
+        background-color: #d40f0f; 
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .navlist.show {
+        display: block; 
+        right: 0;
+    }
+
+    .navlist li {
         display: block;
-        padding-bottom: 1rem;
-        font-size: 1rem;
+        margin: 10px 0;
     }
+
+    #menu-icon {
+        display: block; 
+        cursor: pointer;
+    }
+
+    .bx-x {
+        display: inline-block; 
+    }
+
+    header.sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about .img-about img {
+        max-width: 300px;
+    }
+
+    .about-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-content p {
+        font-size: 0.9rem;
+    }
+
+    .skills {
+        padding: 30px 5%;
+    }
+
+    .skill-main {
+        grid-template-columns: 1fr;
+    }
+
+    .professional {
+        grid-template-columns: 1fr;
+    }
+
+    .box {
+        margin: 10px 0;
+    }
+
+    .box .text big {
+        font-size: 0.9rem;
+    }
+
+    .circle {
+        height: 100px;
+    }
+
+    .points {
+        height: 8px;
+    }
+
+    .section-services .service-box {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .service-icon {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+
+    .service-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .service-box p {
+        font-size: 0.9rem;
+    }
+
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .Port-image img {
+        width: 100%;
+    }
+
+    .layer {
+        padding: 0 20px;
+        font-size: 12px;
+    }
+
+    .contact form {
+        max-width: 100%;
+    }
+
+    .contact form input,
+    .contact form textarea {
+        padding: 0.5rem;
+    }
+}
+@media (min-width: 801px) {
+    .cross-sign {
+        display: none;
+    }
+}
+@media (max-width:1024px) {
+    .home-image .img-box img {
+        display: none;
+     }
+    
 }
